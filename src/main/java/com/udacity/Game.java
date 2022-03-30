@@ -158,7 +158,7 @@ public class Game {
         else if (grid[0][0]=='o' && grid[1][1]=='o' && grid[2][2]=='o' || grid[0][2]=='o' && grid[1][1]=='o' && grid[2][0]=='o') {
             result = "O wins";
         }
-
+        boolean isWinner = false;
         char [] charArray = {'x', 'o'}; //array of chars x and o
         //vertical check
         for (int i=0; i<charArray.length; i++) { //loop for changing char from x to o
@@ -166,11 +166,11 @@ public class Game {
                 if (grid[j][0]==charArray[i] && grid[j][1]==charArray[i] && grid[j][2]==charArray[i]) {
                     if (charArray[i]=='x') {
                         result = "X wins";
-                    } else if (charArray[i]=='o'){
+                    } else if (charArray[i]=='o') {
                         result = "O wins";
                     }
+                    isWinner = true;
                 }
-
             }
         }
         //horizontal check
@@ -179,16 +179,25 @@ public class Game {
                 if (grid[0][j]==charArray[i] && grid[1][j]==charArray[i] && grid[2][j]==charArray[i]) {
                     if (charArray[i]=='x') {
                         result = "X wins";
-                    } else if (charArray[i]=='o'){
+                    } else if (charArray[i]=='o') {
                         result = "O wins";
                     }
+                    isWinner = true;
                 }
-
             }
         }
         //Tie check
-        
-
+        int usedFields = 0;
+        for (int i=0; i<grid.length; i++) {
+            for (int j=0; j<grid[i].length; j++) {
+                if (grid[i][j] != '-') {
+                    usedFields += 1;
+                }
+            }
+        }
+        if (usedFields==9 && !isWinner) {
+            result = "Tie";
+        }
         return result;
     }
 
