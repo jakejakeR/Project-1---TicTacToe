@@ -158,6 +158,37 @@ public class Game {
         else if (grid[0][0]=='o' && grid[1][1]=='o' && grid[2][2]=='o' || grid[0][2]=='o' && grid[1][1]=='o' && grid[2][0]=='o') {
             result = "O wins";
         }
+
+        char [] charArray = {'x', 'o'}; //array of chars x and o
+        //vertical check
+        for (int i=0; i<charArray.length; i++) { //loop for changing char from x to o
+            for (int j=0; j<3; j++) {             //loop for changing columns
+                if (grid[j][0]==charArray[i] && grid[j][1]==charArray[i] && grid[j][2]==charArray[i]) {
+                    if (charArray[i]=='x') {
+                        result = "X wins";
+                    } else if (charArray[i]=='o'){
+                        result = "O wins";
+                    }
+                }
+
+            }
+        }
+        //horizontal check
+        for (int i=0; i<charArray.length; i++) { //loop for changing char from x to o
+            for (int j=0; j<3; j++) {             //loop for changing columns
+                if (grid[0][j]==charArray[i] && grid[1][j]==charArray[i] && grid[2][j]==charArray[i]) {
+                    if (charArray[i]=='x') {
+                        result = "X wins";
+                    } else if (charArray[i]=='o'){
+                        result = "O wins";
+                    }
+                }
+
+            }
+        }
+        //Tie check
+        
+
         return result;
     }
 
